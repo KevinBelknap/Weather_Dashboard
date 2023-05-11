@@ -2,36 +2,30 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="Assets/style.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="Assets/style.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="logo">
-            <h1 id="logo-main" class="logo-main"> Weather Dashboard</h1>
-        </div>
-        <div class="links">
-            <ul>
-                <li id="City">City</li>
-                <li id="Temp">Temp</li>
-                <li id="Wind">Wind</li>
-                <li id="Hummidity">Hummidity</li>
-            </ul>
-        </div>
-        <!-- The button -->
-        <form class="example">
-            <input id="search-bar" type="text" placeholder="Search..">
-            <button id="search-button" onclick="onClick()"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
+  <header>
+    <h1>Weather Dashboard</h1>
+    <form>
+      <label for="city-input">Enter a city:</label>
+      <input type="text" id="city-input">
+      <button type="submit" id="search-btn">Search</button>
+    </form>
+  </header>
+  
+  <main>
+    <div id="current-weather"></div>
+    <h2>5-Day Forecast:</h2>
+    <div id="forecast"></div>
+  </main>
 
-
+  <script src="Assets/script.js"></script>
 </body>
-<script src="Assets/script.js"></script>
 
 </html>
+
