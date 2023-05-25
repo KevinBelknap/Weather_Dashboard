@@ -5,16 +5,19 @@
   }
   
   body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
+    width: 100vw;
+    height: 100vh;
+    background: url('https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
   }
+  
   
   header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    color: #fff;
+    background-color: #ddd;
+    color: #111;
     padding: 1rem;
   }
   
@@ -40,8 +43,8 @@
   }
   
   button[type="submit"] {
-    background-color: #fff;
-    color: #333;
+    background-color: #111;
+    color: #ddd;
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     border: none;
@@ -50,8 +53,8 @@
   }
   
   button[type="submit"]:hover {
-    background-color: #333;
-    color: #fff;
+    background-color: #ddd;
+    color: #111;
   }
   
   main {
@@ -80,7 +83,9 @@
   
   #forecast {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     flex-wrap: wrap;
   }
   
@@ -106,3 +111,16 @@
     margin-top: 0.5rem;
   }
   
+  #five-day{
+background-color:#696969;
+color: #ddd;
+  }
+
+#future-weather{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 20px;
+
+}
