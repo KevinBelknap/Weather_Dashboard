@@ -113,7 +113,22 @@
   
   #five-day{
 background-color:#696969;
-color: #ddd;
+color: #090909;
+  }
+
+  .fa-fa-search{
+    background-color:#696969;
+    color: #090909;
+  }
+
+  #search-button{
+    background-color:#696969;
+    color: #ddd;
+  }
+
+  #clear-history{
+    background-color:#696969;
+    color: #ddd;
   }
 
 #future-weather{

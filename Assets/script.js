@@ -1,4 +1,3 @@
-//Declare a variable to store the searched city
 var city="";
 // variable declaration
 var searchCity = $("#search-city");
@@ -10,7 +9,7 @@ var currentHumidty= $("#humidity");
 var currentWSpeed=$("#wind-speed");
 var currentUvindex= $("#uv-index");
 var sCity=[];
-// searches the city to see if it exists in the entries from the storage
+// searches the city to see if it exists
 function find(c){
     for (var i=0; i<sCity.length; i++){
         if(c.toUpperCase()===sCity[i]){
@@ -19,9 +18,9 @@ function find(c){
     }
     return 1;
 }
-//Set up the API key
+//API Key
 var APIKey="90bd873893e586663a4af08821c6ac66";
-// Display the current and future weather to the user after grabing the city form the input text box.
+// Display the current & future weather
 function displayWeather(event){
     event.preventDefault();
     if(searchCity.val().trim()!==""){
@@ -29,37 +28,32 @@ function displayWeather(event){
         currentWeather(city);
     }
 }
-// Here we create the AJAX call
+// This is the ajax call
 function currentWeather(city){
-    // Here we build the URL so we can get a data from server side.
+    // Url for server side data
     var queryURL= "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APIKey;
     $.ajax({
         url:queryURL,
         method:"GET",
     }).then(function(response){
 
-        // parse the response to display the current weather including the City name. the Date and the weather icon. 
         console.log(response);
-        //Dta object from server side Api for icon property.
         var weathericon= response.weather[0].icon;
         var iconurl="https://openweathermap.org/img/wn/"+weathericon +"@2x.png";
-        // The date format method is taken from the  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
         var date=new Date(response.dt*1000).toLocaleDateString();
-        //parse the response for name of city and concanatig the date and icon.
         $(currentCity).html(response.name +"("+date+")" + "<img src="+iconurl+">");
-        // parse the response to display the current temperature.
         // Convert the temp to fahrenheit
 
         var tempF = (response.main.temp - 273.15) * 1.80 + 32;
         $(currentTemperature).html((tempF).toFixed(2)+"&#8457");
         // Display the Humidity
         $(currentHumidty).html(response.main.humidity+"%");
-        //Display Wind speed and convert to MPH
+        //Display Wind speed in MPH
         var ws=response.wind.speed;
         var windsmph=(ws*2.237).toFixed(1);
         $(currentWSpeed).html(windsmph+"MPH");
-        // Display UVIndex.
-        //By Geographic coordinates method and using appid and coordinates as a parameter we are going build our uv query url inside the function below.
+        // to display UVIndex.
+
         UVIndex(response.coord.lon,response.coord.lat);
         forecast(response.id);
         if(response.cod==200){
@@ -83,7 +77,6 @@ function currentWeather(city){
 
     });
 }
-    // This function returns the UVIindex response.
 function UVIndex(ln,lt){
     var uvqURL="https://api.openweathermap.org/data/2.5/uvi?appid="+ APIKey+"&lat="+lt+"&lon="+ln;
     $.ajax({
@@ -120,14 +113,14 @@ function forecast(cityid){
     });
 }
 
-//add the passed city on the search history
+
 function addToList(c){
     var listEl= $("<li>"+c.toUpperCase()+"</li>");
     $(listEl).attr("class","list-group-item");
     $(listEl).attr("data-value",c.toUpperCase());
     $(".list-group").append(listEl);
 }
-// display the past search again when the list group item is clicked in search history
+
 function invokePastSearch(event){
     var liEl=event.target;
     if (event.target.matches("li")){
